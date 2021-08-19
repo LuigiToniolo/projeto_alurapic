@@ -12,10 +12,10 @@ import { PhotoService } from '../photo/photo.service';
 export class PhotoListComponent implements OnInit {
 
   photos: Photo[] = [];
-  filter = '';
-  hasMore = true;
-  currentPage = 1;
-  userName = '';
+  filter: string = '';
+  hasMore: boolean = true;
+  currentPage: number = 1;
+  userName: string = '';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -27,15 +27,13 @@ export class PhotoListComponent implements OnInit {
     this.photos = this.activatedRoute.snapshot.data['photos'];
   }
 
-  //^ Não vai deixar ocupar a memoria do observable e do subject.
-
   load() {
     this.photoService
       .listFromUserPaginated(this.userName, ++this.currentPage)
       .subscribe(photos => {
-        this.filter = ''; //Quando filtrar alguma pesquisa, e clicar no load more, irá limpar o filtro e carregar todas as outras fotos
+        this.filter = '';
         this.photos = this.photos.concat(photos);
-        if (!photos.length) { this.hasMore = false; }
+        if(!photos.length) this.hasMore = false;
       });
   }
 }
