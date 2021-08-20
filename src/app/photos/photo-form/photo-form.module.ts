@@ -1,3 +1,4 @@
+import { ImmediateClickModule } from './../../shared/directives/immediate-click/immediate-click.module';
 import { PhotoModule } from './../photo/photo.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -14,7 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         VMessageModule,
         FormsModule,
         RouterModule,
-        PhotoModule
+        PhotoModule,
+        ImmediateClickModule
      ]
 })
 export class PhotoFormModule { }
