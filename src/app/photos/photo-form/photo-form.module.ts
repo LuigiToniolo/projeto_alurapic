@@ -1,15 +1,15 @@
-import { ImmediateClickModule } from './../../shared/directives/immediate-click/immediate-click.module';
-import { PhotoModule } from './../photo/photo.module';
-import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { PhotoFormComponent } from './photo-form.component';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { VMessageModule } from '../../shared/components/vmessage/vmessage.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { PhotoModule } from '../photo/photo.module';
+import { ImmediateClickModule } from '../../shared/directives/immediate-click/immediate-click.module';
 
 @NgModule({
     declarations: [PhotoFormComponent],
-    imports: [
+    imports: [ 
         CommonModule,
         ReactiveFormsModule,
         VMessageModule,
@@ -17,6 +17,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         RouterModule,
         PhotoModule,
         ImmediateClickModule
-     ]
+    ]
 })
 export class PhotoFormModule { }

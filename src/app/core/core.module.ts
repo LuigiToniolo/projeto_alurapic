@@ -8,23 +8,23 @@ import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
     declarations: [
-      HeaderComponent,
-      FooterComponent
+        HeaderComponent,
+        FooterComponent
     ],
     exports: [
-      HeaderComponent,
-      FooterComponent
+        HeaderComponent,
+        FooterComponent
     ],
     imports: [
         CommonModule,
         RouterModule
     ],
     providers: [
-      {
-          provide: HTTP_INTERCEPTORS,
-          useClass: RequestInterceptor,
-          multi: true
-      }
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: RequestInterceptor,
+            multi: true
+        }
     ]
 })
 export class CoreModule { }
