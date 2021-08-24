@@ -1,16 +1,18 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Observable } from "rxjs";
+import { switchMap, first } from 'rxjs/operators';
 
 import { PhotoService } from "../photo/photo.service";
 import { Photo } from "../photo/photo";
+import { PhotoComment } from "../photo/photo-comment";
 import { AlertService } from "../../shared/components/alert/alert.service";
 import { UserService } from "../../core/user/user.service";
 
 @Component({
     templateUrl: './photo-details.component.html'
 })
-export class PhotoDetailsComponent implements OnInit {
+export class PhotoDetailsComponent implements OnInit { 
 
     photo$: Observable<Photo>;
     photoId: number;
@@ -44,5 +46,15 @@ export class PhotoDetailsComponent implements OnInit {
                     console.log(err);
                     this.alertService.warning('Could not delete the photo!', true);
                 });
+    }
+
+    like(photo: Photo) {
+        this.photoService
+            .like(photo.id)
+            .subscribe(liked => {
+                if(liked) {
+                    this.photo$ = this.photoService.findById(photo.id);
+                }
+            });
     }
 }
